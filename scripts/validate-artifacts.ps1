@@ -44,7 +44,7 @@ $data = Import-Excel -StartRow 3 -Path "$tempFolderPath/$spreadsheetName" -Works
 $computeEstimate = $data | Where-Object {$_.'Service Category' -eq 'Compute'}
 if ($computeEstimate) { 
     if ($computeEstimate.'Service Category'.Count -eq 1) { 
-        if ($computeEstimate.'Region' -ne 'UK West') { 
+        if ($computeEstimate.'Region' -ne 'UK West') {
             throw "Unable to verify the VM region - please make sure it set to UK West and try again."
         } 
 
@@ -56,7 +56,7 @@ if ($computeEstimate) {
             throw "Unable to verify VM OS type in calulations - please make sure that VM OS tyoe is set to Linux in the calculations and try again. "
         } 
 
-        if (-not $computeEstimate.Description.Contains("1 managed disk – P4")) { 
+        if (-not $computeEstimate.Description.Contains("1 managed disk – P4")) {
             throw "Unable to verify that you included OS disk to the calulations - please check and try again. "
         } 
         
